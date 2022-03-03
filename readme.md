@@ -2,6 +2,10 @@
 
 <br>
 
+<img src="https://i.imgur.com/gJaRxtZ.jpg">
+
+<br>
+
 > ## Functionalities:
 
 * Convert currencies
@@ -17,6 +21,8 @@
 * Apollo-server
 * Axios
 * Dotenv
+
+<br>
 
 > ## TypeGraphQL Features 
 
