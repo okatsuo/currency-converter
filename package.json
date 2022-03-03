@@ -10,12 +10,12 @@
     "dotenv": "^16.0.0",
     "graphql": "^15.3.0",
     "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
     "type-graphql": "^1.1.1"
   },
   "scripts": {
     "dev": "ts-node-dev --respawn src/main/index.ts",
-    "build": "yarn tsc",
-    "start": "yarn build && node dist/main/index.js"
+    "start": "sh scripts/deploy.sh"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
