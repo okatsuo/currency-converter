@@ -15,6 +15,7 @@
   },
   "scripts": {
     "dev": "ts-node-dev --respawn src/main/index.ts",
+    "tsc": "tsc",
     "build": "rimraf dist && yarn tsc",
     "start": "yarn build && node dist/main/index.js"
   },
