@@ -13,7 +13,9 @@
     "type-graphql": "^1.1.1"
   },
   "scripts": {
-    "dev": "ts-node-dev --respawn src/main/index.ts"
+    "dev": "ts-node-dev --respawn src/main/index.ts",
+    "build": "yarn tsc",
+    "start": "yarn build && node dist/main/index.js"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
