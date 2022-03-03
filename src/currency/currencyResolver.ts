@@ -3,7 +3,6 @@ import { CurrencyInput, CurrencyOutput } from './currencyContracts';
 import { Currency } from './currencySchema';
 import { currencyRequestValidator } from './validator';
 import { currencyService } from './currencyService';
-import { createCurrencyFile } from '../helpers/writeAndReadCurrencyJson';
 import { createRequestUnion } from '../helpers/createRequestUnion';
 import { RequestError } from '../requestError';
 
@@ -19,9 +18,7 @@ export class CurrencyResolver {
     if (hasError) return hasError
 
     const { amount, currencyBase, currencyTarget } = fields
-    const { currencies } = await currencyService(currencyBase)
-
-    createCurrencyFile(Object.keys(currencies))
+    const currencies = await currencyService(currencyBase)
 
     const result = currencies[currencyTarget] * amount
     return { result }

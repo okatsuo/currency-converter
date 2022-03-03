@@ -1,4 +1,4 @@
-import { readCurrencyFile } from '../helpers/writeAndReadCurrencyJson';
+import { readCurrencyFile } from '../helpers/readCurrencyJson';
 import { RequestError, requestErros } from '../requestError';
 import { CurrencyInput } from './currencyContracts';
 
