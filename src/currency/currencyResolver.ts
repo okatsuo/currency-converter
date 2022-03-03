@@ -15,7 +15,7 @@ export class CurrencyResolver {
     const { amount, currencyBase, currencyTarget } = fields
 
     const { currencies } = await currencyService(currencyBase)
-    await createCurrencyFile(currencies)
+    createCurrencyFile(Object.keys(currencies))
 
     const result = currencies[currencyTarget] * amount
     return { result }
