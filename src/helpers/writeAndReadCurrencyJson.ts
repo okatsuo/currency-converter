@@ -1,5 +1,10 @@
-import fs from 'fs'
+import { writeFileSync, readFileSync } from 'fs'
 
 export const createCurrencyFile = (data: Object) => {
-  fs.writeFileSync('currencies.json', JSON.stringify(data))
+  writeFileSync('currencies.json', JSON.stringify(data))
+}
+
+export const readCurrencyFile = (): Array<string> => {
+  const data = readFileSync('currencies.json', { encoding: 'utf8', flag: 'r' })
+  return JSON.parse(data)
 }

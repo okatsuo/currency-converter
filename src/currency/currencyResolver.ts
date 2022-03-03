@@ -4,17 +4,23 @@ import { Currency } from './currencySchema';
 import { currencyRequestValidator } from './validator';
 import { currencyService } from './currencyService';
 import { createCurrencyFile } from '../helpers/writeAndReadCurrencyJson';
+import { createRequestUnion } from '../helpers/createRequestUnion';
+import { RequestError } from '../requestError';
+
+const CurrencyUnion = createRequestUnion(Currency)
 
 @Resolver()
 export class CurrencyResolver {
-  @Query(() => Currency)
+  @Query(() => CurrencyUnion)
   async convert(
     @Arg('fields') fields: CurrencyInput
-  ): Promise<CurrencyOutput> {
-    currencyRequestValidator(fields)
-    const { amount, currencyBase, currencyTarget } = fields
+  ): Promise<CurrencyOutput | RequestError> {
+    const hasError = currencyRequestValidator(fields)
+    if (hasError) return hasError
 
+    const { amount, currencyBase, currencyTarget } = fields
     const { currencies } = await currencyService(currencyBase)
+
     createCurrencyFile(Object.keys(currencies))
 
     const result = currencies[currencyTarget] * amount
