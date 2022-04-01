@@ -1,12 +1,12 @@
 import { Field, InputType } from 'type-graphql';
-
+import { CurrencyGenerated } from './currencyEnum';
 @InputType()
 export class CurrencyInput {
-  @Field()
-  currencyBase: string
+  @Field(() => CurrencyGenerated)
+  currencyBase: typeof CurrencyGenerated
 
-  @Field()
-  currencyTarget: string
+  @Field(() => CurrencyGenerated)
+  currencyTarget: typeof CurrencyGenerated
 
   @Field()
   amount: number

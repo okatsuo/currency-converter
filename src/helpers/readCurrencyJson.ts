@@ -1,6 +1,9 @@
 import { readFileSync } from 'fs'
-
+let currencies: Array<string>
 export const readCurrencyFile = (): Array<string> => {
-  const data = readFileSync('currencies.json', { encoding: 'utf8', flag: 'r' })
-  return JSON.parse(data)
+  if (!currencies) {
+    currencies = JSON.parse(readFileSync('currencies.json', { encoding: 'utf8', flag: 'r' }))
+    return readCurrencyFile()
+  }
+  return currencies
 }
