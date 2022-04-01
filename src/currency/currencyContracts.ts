@@ -15,5 +15,5 @@ export class CurrencyInput {
 @InputType()
 export class CurrencyOutput {
   @Field()
-  result: number
+  result: string
 }

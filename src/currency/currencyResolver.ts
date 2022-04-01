@@ -3,7 +3,7 @@ import { CurrencyInput, CurrencyOutput } from './currencyContracts';
 import { Currency } from './currencySchema';
 import { currencyRequestValidator } from './validator';
 import { currencyService } from './currencyService';
-import { createRequestUnion } from '../helpers/createRequestUnion';
+import { createRequestUnion, formatMonetary } from '../helpers';
 import { RequestError } from '../requestError';
 
 const CurrencyUnion = createRequestUnion(Currency)
@@ -19,8 +19,10 @@ export class CurrencyResolver {
 
     const { amount, currencyBase, currencyTarget } = fields
     const currencies = await currencyService(currencyBase)
-
     const result = currencies[currencyTarget] * amount
-    return { result }
+
+    return {
+      result: formatMonetary({ currencyTarget, value: result })
+    }
   }
 }
