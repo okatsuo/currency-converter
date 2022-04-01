@@ -3,10 +3,10 @@ import { CurrencyGenerated } from './currencyEnum';
 @InputType()
 export class CurrencyInput {
   @Field(() => CurrencyGenerated)
-  currencyBase: typeof CurrencyGenerated
+  currencyBase: string
 
   @Field(() => CurrencyGenerated)
-  currencyTarget: typeof CurrencyGenerated
+  currencyTarget: string
 
   @Field()
   amount: number
